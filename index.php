@@ -15,25 +15,9 @@
 				<h2 style="margin:0;">Here's my Portfolio</h2>
 			</div>
 			<div class="flexer">
-				<figure>
-					<a href="moodtunes">
-						<img src="assets/moodtunes-thumb.jpg" alt="Moodtunes thumbnail">
-						<figcaption><h4>moodtunes</h4></figcaption>
-					</a>
-				</figure>
-				<figure>
-					<a href="kregart">		
-						<img src="assets/kregart-thumb.jpg" alt="Kreg-Art thumbnail">
-						<figcaption><h4>KregArt</h4></figcaption>
-					</a>
-				</figure>			
-				<figure>
-					<a href="chord-generator">
-						<img src="assets/chord-generator-thumb.jpg" alt="Chord-Generator thumbnail">
-						<figcaption><h4>Chord Generator</h4></figcaption>
-					</a>
-				</figure>
+				<?php include('portfolio-thumbs.php') ;?>
 			</div>
+			<div class="black"></div>
 		</section>
 		<section id="what" class="white">
 			<div class="black medium">
@@ -59,7 +43,7 @@
 		<section id="contact" class="orange">
 			<div class="black small">
 				<h2>Contact Me</h2>
-				<p>If you'd like to inquire about my services, feel free to get in touch with me in one of the following ways:</p><br>	
+				<p>If you'd like to inquire about my services, feel free to get in touch with me.</p><br>	
 				<div class="flexer bottom-border bottom-link">
 					<div class="left-border bottom-border-mob half">
 						<h3>email</h3>
@@ -77,9 +61,11 @@
 	<script>
 		jQuery(document).ready(function ($) { 
 			//SHOW WELCOME TEXT//
+			$("#home").addClass("show");
 			$("#welcome .black").addClass("show");
 			var referrer =  document.referrer;
 			if(referrer.indexOf('http://localhost/1984-pumpkin/portfolio-item.php') != -1){
+			//if(referrer.indexOf('http://mylesmalloy.com/testy.com/portfolio-item.php') != -1){
 				$("#home").css("right","100vw");
 				$("#home").addClass("shift-right");
 			}
@@ -88,6 +74,7 @@
 			$("#portfolio a").click(function(e){
 				e.preventDefault();
 				$link = $(this).attr("href");
+				$("#home").removeClass("show");
 				if ($("#home").hasClass("shift-right")) {
 					$("#home").toggleClass("shift-right shift-left");
 				}

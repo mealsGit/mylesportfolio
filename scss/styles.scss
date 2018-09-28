@@ -58,7 +58,7 @@ ul {
 	line-height:25px;
 }
 nav {
-	background:hsla(233, 98%, 10%, 0.7);
+	background:rgba(0, 3, 33, 0.9);
 	position:fixed;
 	top:0;
 	height:100vh;
@@ -159,6 +159,12 @@ section#portfolio {
 		width:100%;
 	}
 }
+div#home {
+	opacity:0;
+}
+div#home.show {
+	opacity:1;
+}
 div#home, div#portfolio-item {
 	position:relative;
 	transition:1s opacity;
@@ -170,7 +176,6 @@ div#home.shift-left, div#home.shift-right {
 }
 div#home.shift-left {
 	animation-name: homeshift-left;
-	opacity:0;
 }
 div#home.shift-right {
 	animation-name: homeshift-right;
@@ -209,6 +214,7 @@ div#portfolio-item .black img {
 	background:#000;
 	padding:40px;
 	margin:0 auto;
+	box-shadow:4px 4px 16px #222;
 }
 .small {
 	max-width:450px;
@@ -250,7 +256,8 @@ div#portfolio-item .black img {
 	section#portfolio {
 		display:block;
 		figure{
-			width:100%;
+			width:50%;
+			display:inline-block;
 		}
 	}
 	div#portfolio-item .black img {
@@ -280,6 +287,10 @@ div#portfolio-item .black img {
 	.flexer {
 		display:block;
 	}
+	.black {
+		box-shadow:2px 2px 15px #222;
+	}
+
 }
 @media all and (max-width: 767px) {
 	h1, h2 {

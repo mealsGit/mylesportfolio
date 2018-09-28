@@ -14,6 +14,7 @@ jQuery(document).ready(function ($) {
 	});
 	$("nav a").click(function(){
 		$("nav").removeClass("active");
+		$("#hamburger").removeClass("x");
 		//$("body").css("overflow-y","auto");
 	});
 })

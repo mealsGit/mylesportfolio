@@ -4,12 +4,6 @@
 	
 	$selected_item = substr($link, strpos($link, "?") + 1);
 	
-	$mysqli = new mysqli('localhost','root','root','mamp_database');
-	
-	if ($mysqli->connect_error) { 
-		die('Database Error');
-	}
-	
 	//$results = $mysqli->query("SELECT * FROM `myles-portfolio` WHERE hrefval = 'moodtunes'"); 
 	
 	$results = $mysqli->query("SELECT * FROM `myles-portfolio` WHERE hrefval = '" . $selected_item ."'"); 
@@ -27,7 +21,8 @@
 	//print "<pre>";
 	//print_r($portfolio_item);
 	//print "</pre>";
-
+	$trimmed_url = str_replace("http://","",$portfolio_item['url']);
+	$trimmed_url = str_replace(".com/",".com",$trimmed_url);
 ?>
 <body>
 <?php include('nav.php') ;?>
@@ -61,32 +56,16 @@
 					</div>
 				</div>
 			</div>
-			<h4 style="text-align:center;"><?php if (($portfolio_item['url'])!= ""){?><a href="<?php print ($portfolio_item['url']);?>">View <?php print ($portfolio_item['url']);?></a> or <a href="index.php#portfolio">g<?}else{?><a href="index.php#portfolio">G<?}?>o back to my portfolio</a></h4>
+			<h4 style="text-align:center;"><?php if (($portfolio_item['url'])!= ""){?>View <a href="<?php print ($portfolio_item['url']);?>"><?php print $trimmed_url;?></a> or <a href="index.php#portfolio">g<?}else{?><a href="index.php#portfolio">G<?}?>o back to my portfolio</a></h4>
 		</section>
 		<section id="portfolio">
 			<div class="black">
 				<h2 style="margin:0;">More of my Portfolio</h2>
 			</div>
 			<div class="flexer">
-				<figure>
-					<a href="#">
-						<img src="assets/moodtunes-thumb.jpg" alt="Moodtunes thumbnail">
-						<figcaption><h4>moodtunes</h4></figcaption>
-					</a>
-				</figure>
-				<figure>
-					<a href="#">		
-						<img src="assets/kregart-thumb.jpg" alt="Kreg-Art thumbnail">
-						<figcaption><h4>KregArt</h4></figcaption>
-					</a>
-				</figure>			
-				<figure>
-					<a href="#">
-						<img src="assets/chord-generator-thumb.jpg" alt="Chord-Generator thumbnail">
-						<figcaption><h4>Chord Generator</h4></figcaption>
-					</a>
-				</figure>
+				<?php include('portfolio-thumbs.php') ;?>
 			</div>
+			<div class="black"></div>
 		</section>
 </div>
 <script>
@@ -100,6 +79,16 @@
 			}
 			setTimeout(function(){
 				window.location.href = "index.php";
+			}, 500);
+		});
+		$("#portfolio div.flexer a").click(function(e) {
+			e.preventDefault();
+			if ($("#portfolio-item").hasClass("shift-left")) {
+				$("#portfolio-item").toggleClass("shift-right shift-left");
+			}
+			$link = $(this).attr("href");
+			setTimeout(function(){
+				window.location.href = $link;
 			}, 500);
 		});
 	});
