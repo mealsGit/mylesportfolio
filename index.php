@@ -4,10 +4,18 @@
 	<div id="home">
 		<a class="button" id="hamburger"><span id="hamburger-icon">&#9776;</span><span id="x-icon">X</span></a>
 		<section id="welcome" class="orange">
-			<div class="black small">
-				<h1>Hello, I'm Myles</h1>
-				<p>Welcome to my site. I design and develop websites, with other skills on the side.</p><br>
-				<p>Scroll down to view <a href="#portfolio">my portfolio</a>, learn more about <a href="#what">what I do</a>, or <a href="#contact">contact me</a>.</p>
+			<div class="black large">
+				<div class="flexer">
+					<div class="two-third left-border">
+					<h1>Hello, I'm Myles</h1>
+					<div id="vert-image" class="bottom-border bottom-border-mob">
+						<img src="assets/meals.png" alt="Myles Malloy">
+					</div>
+					<p>Welcome to my site. I design and develop websites, with other skills on the side.</p><br>
+					<p>Scroll down to view <a href="#portfolio">my portfolio</a>, learn more about <a href="#what">what I do</a>, or <a href="#contact">contact me</a>.</p>
+					</div>
+					<div class="third flexer"><img src="assets/meals.png" alt="Myles Malloy"></div>
+				</div>
 			</div>
 		</section>
 		<section id="portfolio">
@@ -65,7 +73,6 @@
 			$("#welcome .black").addClass("show");
 			var referrer =  document.referrer;
 			if(referrer.indexOf('http://localhost/1984-pumpkin/portfolio-item.php') != -1){
-			//if(referrer.indexOf('http://mylesmalloy.com/testy.com/portfolio-item.php') != -1){
 				$("#home").css("right","100vw");
 				$("#home").addClass("shift-right");
 			}
